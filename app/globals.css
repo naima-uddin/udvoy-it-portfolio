@@ -1732,7 +1732,7 @@ em {
   align-items: center;
   justify-content: space-between;
   gap: 0 1.5rem;
-  margin-bottom: 1.4rem;
+  margin-bottom: 0.6rem;
 }
 .team-bar .team-label {
   margin-bottom: 0;
