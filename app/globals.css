@@ -200,10 +200,10 @@ em {
   font-weight: 800;
   letter-spacing: 0.2em;
 }
-.logo-mark {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
+.logo img {
+  display: block;
+  width: auto;
+  height: clamp(24px, 2.4vw, 30px);
 }
 .nav-links {
   display: flex;
@@ -1683,84 +1683,239 @@ em {
 }
 /* ---------- team ---------- */
 
+/* small labels above the leadership row and the team grid */
+.team-label {
+  margin-bottom: 0.9rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+/* leadership: a featured row of larger cards */
+.team-leads {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+  gap: clamp(0.8rem, 1.6vw, 1.4rem);
+  margin: 0 0 clamp(2.4rem, 6vh, 3.6rem);
+  padding: 0;
+  list-style: none;
+}
+.member.member-lead {
+  flex-direction: row;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 0.7rem;
+  border-radius: 20px;
+  background:
+    linear-gradient(160deg, rgba(183, 156, 255, 0.1), rgba(255, 255, 255, 0.01)),
+    rgba(10, 10, 16, 0.6);
+}
+.member.member-lead .member-photo {
+  flex: none;
+  width: clamp(96px, 9vw, 124px);
+  border-radius: 14px;
+}
+.member.member-lead .member-info {
+  padding: 0;
+}
+.member.member-lead h3 {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+}
+.member.member-lead .member-role {
+  font-size: 0.85rem;
+}
+/* the "Our team" label and the department filters share one row on wide screens */
+.team-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 1.5rem;
+  margin-bottom: 1.4rem;
+}
+.team-bar .team-label {
+  margin-bottom: 0;
+}
+/* department filters reuse the technology tabs' look (and their swipeable row on phones) */
+.team-filters {
+  margin-bottom: 0;
+}
+.team-filters button[aria-pressed="true"] {
+  color: var(--bg);
+  background: var(--fg);
+  border-color: var(--fg);
+}
+/* four columns on wide screens, three on tablets, two on phones: works for any team size */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(0.9rem, 1.6vw, 1.4rem);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(0.7rem, 1.4vw, 1.2rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 .member {
   position: relative;
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.1rem;
+  flex-direction: column;
+  padding: 0.55rem;
   border: 1px solid var(--line);
   border-radius: 18px;
   background:
     linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01)),
     rgba(10, 10, 16, 0.55);
+  animation: member-in 0.6s var(--ease) both;
+  animation-delay: calc(var(--i, 0) * 45ms);
+  transition:
+    border-color 0.3s,
+    transform 0.4s var(--ease);
 }
-/* portrait (or initials / number) inside a gradient ring */
+@keyframes member-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
 .member-photo {
-  flex: none;
-  width: 64px;
-  height: 64px;
-  padding: 2px;
-  border-radius: 50%;
-  background: conic-gradient(from 210deg, #8fd3ff, #b79cff, #ff9ccf, #ffc48a, #8fd3ff);
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 13px;
+  background: #0e0c18;
 }
-.member-photo span,
 .member-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease);
+}
+/* no photo yet: initials on the brand gradient */
+.member-photo span {
   display: grid;
   place-items: center;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  font-family: var(--mono);
-  font-size: 0.9rem;
-  font-weight: 700;
-  background: #0e0c18;
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(143, 211, 255, 0.35), transparent 55%),
+    radial-gradient(circle at 80% 90%, rgba(183, 156, 255, 0.45), transparent 60%),
+    #120f22;
 }
 .member-info {
   min-width: 0;
+  padding: 0.75rem 0.35rem 0.3rem;
 }
 .member-info h3 {
-  font-size: 1rem;
+  font-size: 0.92rem;
   font-weight: var(--display);
+  line-height: 1.25;
   letter-spacing: -0.01em;
   text-transform: uppercase;
 }
 .member-role {
-  font-size: 0.8rem;
+  margin-top: 0.2rem;
+  font-size: 0.78rem;
+  line-height: 1.35;
   color: #b79cff;
-}
-.member-focus {
-  margin-top: 0.15rem;
-  font-size: 0.84rem;
-  color: var(--muted);
 }
 .member-link {
   position: absolute;
-  top: 0.8rem;
-  right: 0.9rem;
+  top: 1rem;
+  right: 1rem;
   display: grid;
   place-items: center;
-  width: 1.7rem;
-  height: 1.7rem;
+  width: 1.8rem;
+  height: 1.8rem;
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 7px;
   font-size: 0.78rem;
   font-weight: 800;
-  color: var(--muted);
-  transition:
-    color 0.3s,
-    border-color 0.3s;
+  color: var(--fg);
+  background: rgba(7, 7, 11, 0.72);
+  transition: border-color 0.3s;
 }
 @media (hover: hover) {
+  .member:hover {
+    border-color: rgba(183, 156, 255, 0.45);
+    transform: translateY(-3px);
+  }
+  .member:hover .member-photo img {
+    transform: scale(1.05);
+  }
   .member-link:hover {
-    color: var(--fg);
     border-color: var(--fg);
+  }
+}
+.team-more {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(1.4rem, 3vw, 2rem);
+}
+@media (max-width: 1200px) {
+  .team-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (max-width: 900px) {
+  .team-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  /* leadership cards stack as full-width rows, so the third never sits alone */
+  .team-leads {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.7rem;
+  }
+}
+@media (max-width: 600px) {
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .member {
+    padding: 0.4rem;
+    border-radius: 14px;
+  }
+  .member-photo {
+    border-radius: 10px;
+  }
+  .member-info {
+    padding: 0.6rem 0.25rem 0.2rem;
+  }
+  .member-info h3 {
+    font-size: 0.8rem;
+  }
+  .member-role {
+    font-size: 0.7rem;
+  }
+  /* leadership cards turn into compact rows: photo on the left, name on the right */
+  .team-leads {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.6rem;
+  }
+  .member.member-lead {
+    gap: 0.9rem;
+    padding: 0.55rem;
+    border-radius: 16px;
+  }
+  .member.member-lead .member-photo {
+    flex: none;
+    width: 84px;
+    border-radius: 12px;
+  }
+  .member.member-lead .member-info {
+    padding: 0;
+  }
+  .member.member-lead h3 {
+    font-size: 0.95rem;
+  }
+  .team-bar {
+    gap: 0.8rem;
+  }
+  .team-bar .team-label {
+    width: 100%;
   }
 }
 
@@ -2610,8 +2765,7 @@ em {
 /* ---------- new sections on tablets and phones ---------- */
 
 @media (max-width: 900px) {
-  .why-grid,
-  .team-grid {
+  .why-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   /* the process line runs down the left side instead of across */
@@ -2647,7 +2801,6 @@ em {
 
 @media (max-width: 600px) {
   .why-grid,
-  .team-grid,
   .hire-modes {
     grid-template-columns: 1fr;
   }

@@ -3,8 +3,8 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { TAGLINE } from "@/lib/seo";
 
-// the logo mark, read once at build time
-const markSrc = `data:image/png;base64,${await readFile(join(process.cwd(), "public/brand/udvoy-mark.png"), "base64")}`;
+// the logo, read once at build time
+const logoSrc = `data:image/png;base64,${await readFile(join(process.cwd(), "public/brand/udvoy-logo-white.png"), "base64")}`;
 
 /*
  * The preview image for shared links (LinkedIn, Facebook, WhatsApp, Slack, X…). Generated once at
@@ -37,8 +37,7 @@ export default function Image() {
       >
         <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
           {/* eslint-disable-next-line @next/next/no-img-element -- rendered by next/og, not the browser */}
-          <img src={markSrc} width={56} height={56} alt="" />
-          <div style={{ fontSize: 34, fontWeight: 800, letterSpacing: 10 }}>UDVOY IT</div>
+          <img src={logoSrc} width={315} height={70} alt="UDVOY IT" />
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>

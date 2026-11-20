@@ -126,7 +126,14 @@ export const PROCESS = [
 
 /* ------------------------------------------------------------------ team */
 
-export type Member = { name: string; role: string; focus: string; photo?: string; linkedin?: string };
+export type Member = {
+  /** employee ID: unique, used as the card key so a person can never show twice */
+  id: string;
+  name: string; role: string;
+  focus: string;
+  photo?: string;
+  linkedin?: string;
+};
 
 /**
  * The UDVOY IT team, in employee-ID order (UDV-EMP-001 onward). Photos live in public/team/.
@@ -134,19 +141,19 @@ export type Member = { name: string; role: string; focus: string; photo?: string
  * Add a `linkedin` URL to show a LinkedIn button on a card.
  */
 export const TEAM: Member[] = [
-  { name: "Md. Shamim Raza", role: "Co-Founder", focus: "Management", photo: "/team/shamim-raza.jpg" },
-  { name: "Md. Tanven Arerin Sazid", role: "Co-Founder", focus: "Management", photo: "/team/tanven-arerin-sazid.jpg" },
-  { name: "Abdur Rabby", role: "Co-Founder", focus: "Management", photo: "/team/abdur-rabby.jpg" },
-  { name: "Md. Naymul Hoque", role: "HR Manager", focus: "Human Resources", photo: "/team/naymul-hoque.jpg" },
-  { name: "Laiba Ahsan", role: "SEO Specialist", focus: "SEO", photo: "/team/laiba-ahsan.jpg" },
-  { name: "Sania Kousar", role: "SEO Specialist", focus: "SEO", photo: "/team/sania-kousar.jpg" },
-  { name: "Omar Faruk", role: "Data Entry Executive", focus: "Data Research", photo: "/team/omar-faruk.jpg" },
-  { name: "Md. Shihab Rahman", role: "Data Entry Executive", focus: "Data Research", photo: "/team/shihab-rahman.jpg" },
-  { name: "Md. Faisal Islam", role: "Customer Service Representative", focus: "Customer Service", photo: "/team/faisal-islam.jpg" },
-  { name: "Fahim Ifteker Ahmed", role: "Customer Service Representative", focus: "Customer Service", photo: "/team/fahim-ifteker-ahmed.jpg" },
-  { name: "Md. Motaleb Hosen", role: "Data Entry Executive", focus: "Data Research", photo: "/team/motaleb-hosen.jpg" },
-  { name: "Md. Mamunur Rashid", role: "Data Entry Executive", focus: "Data Research", photo: "/team/mamunur-rashid.jpg" },
-  { name: "Rai An", role: "Web Developer", focus: "Information Technology" }, // CONFIRM: add a photo at /team/rai-an.jpg
+  { id: "UDV-EMP-001", name: "Md. Shamim Raza", role: "Co-Founder", focus: "Management", photo: "/team/shamim-raza.jpg" },
+  { id: "UDV-EMP-002", name: "Md. Tanven Arerin Sazid", role: "Co-Founder", focus: "Management", photo: "/team/tanven-arerin-sazid.jpg" },
+  { id: "UDV-EMP-003", name: "Abdur Rabby", role: "Co-Founder", focus: "Management", photo: "/team/abdur-rabby.jpg" },
+  { id: "UDV-EMP-004", name: "Md. Naymul Hoque", role: "HR Manager", focus: "Human Resources", photo: "/team/naymul-hoque.jpg" },
+  { id: "UDV-EMP-005", name: "Laiba Ahsan", role: "SEO Specialist", focus: "SEO", photo: "/team/laiba-ahsan.jpg" },
+  { id: "UDV-EMP-006", name: "Sania Kousar", role: "SEO Specialist", focus: "SEO", photo: "/team/sania-kousar.jpg" },
+  { id: "UDV-EMP-007", name: "Omar Faruk", role: "Data Entry Executive", focus: "Data Research", photo: "/team/omar-faruk.jpg" },
+  { id: "UDV-EMP-008", name: "Md. Shihab Rahman", role: "Data Entry Executive", focus: "Data Research", photo: "/team/shihab-rahman.jpg" },
+  { id: "UDV-EMP-009", name: "Md. Faisal Islam", role: "Customer Service Representative", focus: "Customer Service", photo: "/team/faisal-islam.jpg" },
+  { id: "UDV-EMP-010", name: "Fahim Ifteker Ahmed", role: "Customer Service Representative", focus: "Customer Service", photo: "/team/fahim-ifteker-ahmed.jpg" },
+  { id: "UDV-EMP-011", name: "Md. Motaleb Hosen", role: "Data Entry Executive", focus: "Data Research", photo: "/team/motaleb-hosen.jpg" },
+  { id: "UDV-EMP-012", name: "Md. Mamunur Rashid", role: "Data Entry Executive", focus: "Data Research", photo: "/team/mamunur-rashid.jpg" },
+  { id: "UDV-EMP-013", name: "Rai An", role: "Web Developer", focus: "Information Technology" }, // CONFIRM: add a photo at /team/rai-an.jpg
 ];
 
 /* ------------------------------------------------------------------ testimonials */
