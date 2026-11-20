@@ -1,5 +1,5 @@
 /* ==========================================================================
-   UCCHAS · all animation is driven by one CSS variable per section: --p (0 → 1)
+   UDVOY IT · all animation is driven by one CSS variable per section: --p (0 → 1)
    written by lib/engine.ts. Everything below is plain CSS on top of that.
    ========================================================================== */
 
@@ -201,19 +201,9 @@ em {
   letter-spacing: 0.2em;
 }
 .logo-mark {
-  position: relative;
-  width: 16px;
-  height: 16px;
-  border: 1.5px solid #fff;
-  border-radius: 50%;
-}
-.logo-mark::after {
-  content: "";
-  position: absolute;
-  inset: 3px;
-  border-radius: 50%;
-  background: #fff;
-  animation: breathe 2.6s ease-in-out infinite;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
 }
 .nav-links {
   display: flex;
@@ -1460,7 +1450,7 @@ em {
   font-style: normal;
 }
 
-/* ---------- why Ucchas (follows the word-by-word statement) ---------- */
+/* ---------- why UDVOY IT (follows the word-by-word statement) ---------- */
 
 .why.section {
   padding-top: clamp(1rem, 4vh, 2.5rem);

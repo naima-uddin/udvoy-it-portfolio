@@ -13,7 +13,7 @@ const serif = Instrument_Serif({
   display: "swap",
 });
 
-// the share image comes from app/opengraph-image.tsx, the icons from app/icon.svg, app/favicon.ico
+// the share image comes from app/opengraph-image.tsx, the icons from app/icon.png, app/favicon.ico
 // and app/apple-icon.png, and the sitemap, robots.txt and manifest from their files in app/
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

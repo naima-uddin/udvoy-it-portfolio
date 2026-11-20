@@ -10,8 +10,8 @@ export default function Contact() {
         <div className="contact-info">
           <p className="kicker">( Contact )</p>
           <h2 className="cta-title">
-            Let&apos;s talk about <br />
-            your <em>project.</em>
+            Let&apos;s turn your vision <br />
+            into <em>reality.</em>
           </h2>
           <p className="lead">
             Tell us about your project or the role you need. We&apos;ll get back to you within one business day.
@@ -27,6 +27,10 @@ export default function Contact() {
               <dt>Working with</dt>
               <dd>Brands and teams worldwide</dd>
             </div>
+            <div>
+              <dt>Our team</dt>
+              <dd>{SITE.locations}</dd>
+            </div>
           </dl>
         </div>
 
@@ -34,7 +38,9 @@ export default function Contact() {
       </div>
 
       <div className="foot-bar">
-        <span>© 2026 {SITE.name}</span>
+        <span>
+          © {SITE.founded} {SITE.name} · {SITE.slogan}
+        </span>
         <nav className="foot-links hide-sm" aria-label="Footer">
           {SECTIONS.slice(0, -1).map((s) => (
             <a key={s.id} href={`#${s.id}`}>

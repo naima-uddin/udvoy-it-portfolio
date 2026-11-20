@@ -2,7 +2,7 @@ import Track from "./Track";
 import { vars } from "@/lib/css";
 import { WHY } from "@/lib/site";
 
-/** Why Ucchas: four short, checkable reasons in one row, right under the statement above. */
+/** Why UDVOY IT: four short, checkable reasons in one row, right under the statement above. */
 export default function WhyUs() {
   return (
     <Track name="why" id="why" className="section why">

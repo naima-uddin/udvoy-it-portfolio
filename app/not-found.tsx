@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 // answered with a 404 status; search engines are told not to index it (links on it may be followed)
-export const metadata: Metadata = { title: "Page not found | Ucchas", robots: { index: false, follow: true } };
+export const metadata: Metadata = { title: "Page not found | UDVOY IT", robots: { index: false, follow: true } };
 
 export default function NotFound() {
   return (

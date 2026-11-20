@@ -5,7 +5,7 @@ import { DESCRIPTION } from "@/lib/seo";
 /** /manifest.webmanifest: name, colours and icons when the site is saved to a phone's home screen */
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${SITE.name}: Shopify, E-commerce & Software Development`,
+    name: `${SITE.name}: ${SITE.slogan}`,
     short_name: SITE.name,
     description: DESCRIPTION,
     start_url: "/",

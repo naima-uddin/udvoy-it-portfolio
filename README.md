@@ -1,7 +1,7 @@
-# Ucchas: company website
+# UDVOY IT: company website
 
-Website for Ucchas, an IT company. Its main services are Shopify, e-commerce and remote hiring;
-it also builds websites, apps and custom software. Next.js 16 (App Router) + Lenis smooth scrolling. One page with section
+Website for UDVOY IT ("Innovate. Create. Elevate."), an IT company. Its main services are Shopify, e-commerce,
+web development and remote hiring, plus SEO, data entry and research, and customer support. Next.js 16 (App Router) + Lenis smooth scrolling. One page with section
 navigation, on a static gradient backdrop. Animations are scroll-driven CSS, with no animation
 library.
 
@@ -18,13 +18,13 @@ npm run build && npm start
 | Navigation | `components/Nav.tsx` | Fixed bar with scroll progress, the current section underlined, and a blurred background once the page scrolls; full-screen menu below 1080 px. |
 | Hero | `components/About.tsx` | Headline, two buttons and stats (`Counter.tsx`). |
 | Hero 3D | `components/hero3d/*.jsx` | An exploded-view processor (circuit board, chrome core, glass top) on the right of the hero. See below. |
-| About & why | `components/Story.tsx`, `components/WhyUs.tsx` | Word-by-word "About Ucchas" statement, then four short reasons (`WHY`). |
+| About & why | `components/Story.tsx`, `components/WhyUs.tsx` | Word-by-word "About UDVOY IT" statement, then four short reasons (`WHY`). |
 | Services | `components/Services.tsx`, `components/ServiceArt.tsx`, `components/Spotlight.tsx` | Bento grid from `SERVICES`. Services with `main` set (Shopify, e-commerce, web, remote hiring) get large tiles with a small animated mock-up (`ServiceArt.tsx`); the rest are compact tiles. Tile borders glow near the pointer (`Spotlight.tsx`). |
 | Work | `components/Work.tsx`, `assets/projects/` | Pinned, looping 3D gallery of case studies with photos. Edit `PROJECTS`; photo credits are in `assets/projects/CREDITS.md`. |
 | Testimonials | `components/Testimonials.tsx` | Hidden until `TESTIMONIALS` has real quotes. |
 | Hire talent | `components/Hiring.tsx` | Two ways to hire, the roles, and a call to action (`HIRING`). |
 | Process | `components/Process.tsx` | Four steps on a line that draws itself as you scroll (`PROCESS`). |
-| Team | `components/Team.tsx` | Role cards (`TEAM`); add a name, photo and LinkedIn to show a real person. |
+| Team | `components/Team.tsx`, `public/team/` | One card per team member (`TEAM`), with photo; add a `linkedin` URL to show a LinkedIn button. |
 | Technologies | `components/Technologies.tsx`, `components/StackTabs.tsx` | Marquee (`Marquee.tsx`) that reacts to scroll speed, then four tabs with logo tiles (logos from the `simple-icons` package). Edit `STACK`. |
 | FAQ | `components/Faq.tsx` | Five questions (`FAQ`) in native `<details>` elements. |
 | Contact | `components/Contact.tsx`, `components/ContactForm.tsx`, `app/actions.ts` | Name, email and message, handled by a Server Action, plus the footer bar. |
@@ -64,9 +64,9 @@ Everything search engines and social networks read is set up; the settings live 
 | Title, description, keywords, canonical URL, Open Graph and X (Twitter) tags, robots rules | `metadata` in `app/layout.tsx`, text in `lib/seo.ts` |
 | Share image (1200×630, made at build time) | `app/opengraph-image.tsx` |
 | `/sitemap.xml` and `/robots.txt` | `app/sitemap.ts`, `app/robots.ts` |
-| Icons: favicon, SVG icon, Apple icon, app manifest | `app/favicon.ico`, `app/icon.svg`, `app/apple-icon.png`, `app/manifest.ts`, `public/icon-*.png` |
+| Icons: favicon, icon, Apple icon, app manifest | `app/favicon.ico`, `app/icon.png`, `app/apple-icon.png`, `app/manifest.ts`, `public/icon-*.png` |
 | Structured data (Organization, WebSite, WebPage, services and FAQ) | `jsonLd()` in `lib/seo.ts`, added in `app/page.tsx` |
-| Logo for search results | `public/logo.png` |
+| Logo for search results | `public/logo.png` (the full logo and the mark are in `public/brand/`) |
 | 404 page (not indexed) | `app/not-found.tsx` |
 
 Before going live, set these where you deploy (on Vercel: Project Settings, Environment Variables):

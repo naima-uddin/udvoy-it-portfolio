@@ -1,6 +1,6 @@
 import Track from "./Track";
 import { vars } from "@/lib/css";
-import { TEAM } from "@/lib/site";
+import { SITE, TEAM } from "@/lib/site";
 
 const initials = (name: string) =>
   name
@@ -10,26 +10,23 @@ const initials = (name: string) =>
     .map((w) => w[0]!.toUpperCase())
     .join("");
 
-/**
- * The people a client works with. Real names, photos and LinkedIn links go in lib/site.ts;
- * until a name is set, a card shows the role on its own (never a made-up person).
- */
+/** The UDVOY IT team. Names, roles, photos and LinkedIn links go in lib/site.ts. */
 export default function Team() {
   return (
     <Track name="team" id="team" className="section team">
       <Track as="div" mode="enter" className="sec-head">
         <p className="kicker rise">( Team )</p>
         <h2 className="h2 rise" style={vars({ "--i": 1 })}>
-          The people you&apos;ll <em>work with</em>
+          The people behind <em>UDVOY IT</em>
         </h2>
         <p className="lead rise" style={vars({ "--i": 2 })}>
-          Engineers, designers and recruiters you can talk to directly.
+          Founders, developers, SEO specialists, researchers and support staff, working from {SITE.locations}.
         </p>
       </Track>
 
       <div className="team-grid">
         {TEAM.map((m, i) => (
-          <Track key={m.role} as="div" mode="enter" className="member rise" style={vars({ "--i": i % 3 })}>
+          <Track key={m.name || m.role} as="div" mode="enter" className="member rise" style={vars({ "--i": i % 3 })}>
             <div className="member-photo" aria-hidden={!m.photo}>
               {m.photo ? (
                 // eslint-disable-next-line @next/next/no-img-element -- small local portraits, sized by CSS

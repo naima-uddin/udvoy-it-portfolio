@@ -19,10 +19,10 @@ export default function Services() {
       <Track as="div" mode="enter" className="sec-head">
         <p className="kicker rise">( Services )</p>
         <h2 className="h2 rise" style={vars({ "--i": 1 })}>
-          What we <em>do</em>
+          Everything you need to <em>grow digitally</em>
         </h2>
         <p className="lead rise" style={vars({ "--i": 2 })}>
-          Our main work is Shopify, e-commerce and remote hiring. We also build websites and apps.
+          Shopify, e-commerce, websites and remote hiring, plus SEO, data research and customer support.
         </p>
       </Track>
 

@@ -49,6 +49,24 @@ const PATHS: Record<IconName, React.ReactNode> = {
       <path d="M12 12v9" />
     </>
   ),
+  search: (
+    <>
+      <circle cx="10.5" cy="10.5" r="6" />
+      <path d="M15 15l5.5 5.5" />
+    </>
+  ),
+  table: (
+    <>
+      <rect x="3.5" y="4.5" width="17" height="15" rx="2" />
+      <path d="M3.5 9.5h17M3.5 14.5h17M9.5 9.5v10" />
+    </>
+  ),
+  chat: (
+    <>
+      <path d="M4 5.5h16v10H10l-4 3.5v-3.5H4v-10z" />
+      <path d="M8 10.5h.01M12 10.5h.01M16 10.5h.01" />
+    </>
+  ),
 };
 
 export default function LineIcon({ name, className = "" }: { name: IconName; className?: string }) {

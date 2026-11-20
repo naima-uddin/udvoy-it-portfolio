@@ -97,7 +97,8 @@ export default function Nav() {
       <div ref={shade} className="nav-shade" aria-hidden />
       <nav ref={navEl} className="nav" aria-label="Main">
         <a href="#top" className="logo" onClick={open ? go : undefined}>
-          <span className="logo-mark" aria-hidden />
+          {/* eslint-disable-next-line @next/next/no-img-element -- tiny local logo */}
+          <img className="logo-mark" src="/brand/udvoy-mark.png" alt="" width={22} height={22} />
           {SITE.name.toUpperCase()}
         </a>
         <div className="nav-links">

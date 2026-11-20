@@ -7,8 +7,14 @@
  */
 
 export const SITE = {
-  name: "Ucchas",
-  email: "hello@example.com", // CONFIRM: your real address
+  name: "UDVOY IT",
+  /** the brand slogan, shown in the hero and the share image */
+  slogan: "Innovate. Create. Elevate.",
+  tagline: "Empowering Businesses Through Technology.",
+  email: "hello@example.com", // CONFIRM: your real company address (not a personal Gmail)
+  /** where the team works from */
+  locations: "Bangladesh & Pakistan",
+  founded: 2026,
   /** shown under the contact form and in the FAQ */
   replyTime: "We reply within one business day", // CONFIRM
 };
@@ -24,25 +30,25 @@ export const SECTIONS = [
   { id: "contact", label: "Contact" },
 ] as const;
 
-/** the numbers under the hero. CONFIRM: use only numbers you can back up */
+/** the numbers under the hero: real figures from the team list. Add project counts once you can back them up */
 export const STATS = [
-  { to: 150, suffix: "+", label: "Projects delivered" },
-  { to: 9, suffix: " yrs", label: "In business" },
-  { to: 40, suffix: "+", label: "Remote hires placed" },
-  { to: 98, suffix: "%", label: "Happy clients" },
+  { to: 13, suffix: "", label: "Team members" },
+  { to: 6, suffix: "", label: "Departments" },
+  { to: 2, suffix: "", label: "Countries" },
+  { to: 2026, from: 2016, suffix: "", label: "Founded" },
 ];
 
-/* ------------------------------------------------------------------ why Ucchas */
+/* ------------------------------------------------------------------ why UDVOY IT */
 
 /** the line icons in components/LineIcon.tsx */
-export type IconName = "bag" | "cart" | "browser" | "people" | "phone" | "pen" | "cube";
+export type IconName = "bag" | "cart" | "browser" | "people" | "phone" | "pen" | "cube" | "search" | "table" | "chat";
 
-/** reasons to choose Ucchas, kept short */
+/** reasons to choose UDVOY IT, kept short (from the brand messaging) */
 export const WHY = [
-  { title: "Commerce experts", text: "Shopify and e-commerce are our core work." },
-  { title: "Senior team", text: "Experienced people do the work. You talk to them directly." },
-  { title: "Clear pricing", text: "You get a fixed quote before we start." }, // CONFIRM
-  { title: "Ongoing support", text: "We stay with you after launch." },
+  { title: "Our mission", text: "Empowering ideas through technology, and making it work for everyone." },
+  { title: "Our vision", text: "Building a smarter digital future, one project at a time." },
+  { title: "One team", text: "Developers, SEO specialists, researchers and support under one roof." },
+  { title: "Your success", text: "Your vision. Our innovation. One shared success." },
 ];
 
 /* ------------------------------------------------------------------ services */
@@ -77,7 +83,7 @@ export const SERVICES: Service[] = [
   {
     main: "web",
     title: "Web development",
-    text: "Company websites and web apps.",
+    text: "Company websites, web apps and custom software.",
     icon: "browser",
   },
   {
@@ -87,19 +93,26 @@ export const SERVICES: Service[] = [
     icon: "people",
     href: "#hiring",
   },
-  { title: "Mobile apps", text: "iOS and Android apps.", icon: "phone" },
-  { title: "UI/UX design", text: "Clean designs people enjoy using.", icon: "pen" },
-  { title: "Custom software", text: "Tools and systems for your business.", icon: "cube" },
+  { title: "SEO", text: "Get found on Google and grow your organic traffic.", icon: "search" },
+  { title: "Data entry & research", text: "Accurate data entry, list building and web research.", icon: "table" },
+  { title: "Customer support", text: "Friendly support for your customers by chat, email and phone.", icon: "chat" },
 ];
 
 /* ------------------------------------------------------------------ remote hiring */
 
 export const HIRING = {
   modes: [
-    { title: "Hire through Ucchas", text: "We find and hire the right person. You manage their work." },
+    { title: "Hire through UDVOY IT", text: "We find and hire the right person. You manage their work." },
     { title: "Fully managed team", text: "We hire the team and manage it for you." },
   ],
-  roles: ["Shopify developer", "Web developer", "Mobile developer", "UI/UX designer", "QA tester", "E-commerce assistant"],
+  roles: [
+    "Shopify developer",
+    "Web developer",
+    "SEO specialist",
+    "Data entry executive",
+    "Customer service representative",
+    "E-commerce assistant",
+  ],
 };
 
 /* ------------------------------------------------------------------ process */
@@ -113,17 +126,27 @@ export const PROCESS = [
 
 /* ------------------------------------------------------------------ team */
 
+export type Member = { name: string; role: string; focus: string; photo?: string; linkedin?: string };
+
 /**
- * The people a client will work with. Fill in `name` (and `photo`, a path under /public, and
- * `linkedin`) for real people; until a name is set, the card shows the role on its own.
+ * The UDVOY IT team, in employee-ID order (UDV-EMP-001 onward). Photos live in public/team/.
+ * Only public details go here: no phone numbers, personal emails or other private data.
+ * Add a `linkedin` URL to show a LinkedIn button on a card.
  */
-export const TEAM: { name: string; role: string; focus: string; photo?: string; linkedin?: string }[] = [
-  { name: "", role: "Founder & CEO", focus: "Strategy and clients" },
-  { name: "", role: "CTO", focus: "Technology and quality" },
-  { name: "", role: "Shopify lead", focus: "Shopify stores and apps" },
-  { name: "", role: "Design lead", focus: "UI/UX and branding" },
-  { name: "", role: "Project manager", focus: "Planning and delivery" },
-  { name: "", role: "Talent lead", focus: "Remote hiring" },
+export const TEAM: Member[] = [
+  { name: "Md. Shamim Raza", role: "Co-Founder", focus: "Management", photo: "/team/shamim-raza.jpg" },
+  { name: "Md. Tanven Arerin Sazid", role: "Co-Founder", focus: "Management", photo: "/team/tanven-arerin-sazid.jpg" },
+  { name: "Abdur Rabby", role: "Co-Founder", focus: "Management", photo: "/team/abdur-rabby.jpg" },
+  { name: "Md. Naymul Hoque", role: "HR Manager", focus: "Human Resources", photo: "/team/naymul-hoque.jpg" },
+  { name: "Laiba Ahsan", role: "SEO Specialist", focus: "SEO", photo: "/team/laiba-ahsan.jpg" },
+  { name: "Sania Kousar", role: "SEO Specialist", focus: "SEO", photo: "/team/sania-kousar.jpg" },
+  { name: "Omar Faruk", role: "Data Entry Executive", focus: "Data Research", photo: "/team/omar-faruk.jpg" },
+  { name: "Md. Shihab Rahman", role: "Data Entry Executive", focus: "Data Research", photo: "/team/shihab-rahman.jpg" },
+  { name: "Md. Faisal Islam", role: "Customer Service Representative", focus: "Customer Service", photo: "/team/faisal-islam.jpg" },
+  { name: "Fahim Ifteker Ahmed", role: "Customer Service Representative", focus: "Customer Service", photo: "/team/fahim-ifteker-ahmed.jpg" },
+  { name: "Md. Motaleb Hosen", role: "Data Entry Executive", focus: "Data Research", photo: "/team/motaleb-hosen.jpg" },
+  { name: "Md. Mamunur Rashid", role: "Data Entry Executive", focus: "Data Research", photo: "/team/mamunur-rashid.jpg" },
+  { name: "Rai An", role: "Web Developer", focus: "Information Technology" }, // CONFIRM: add a photo at /team/rai-an.jpg
 ];
 
 /* ------------------------------------------------------------------ testimonials */
@@ -138,8 +161,8 @@ export const TESTIMONIALS: { quote: string; name: string; role: string; company:
 
 export const FAQ = [
   {
-    q: "What does Ucchas do?",
-    a: "We build Shopify stores, e-commerce sites, websites and apps, and help companies hire remote talent.",
+    q: "What does UDVOY IT do?",
+    a: "We build Shopify stores, e-commerce sites and websites, and offer SEO, data entry and research, customer support and remote hiring.",
   },
   {
     q: "How much does a project cost?",

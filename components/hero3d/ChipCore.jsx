@@ -125,11 +125,11 @@ function markingTexture() {
   g.fillStyle = "#f2f0ec";
   g.font = "700 30px system-ui, sans-serif";
   g.letterSpacing = "8px";
-  g.fillText("UCCHAS", 50, S - 70);
+  g.fillText("UDVOY IT", 50, S - 70);
   g.globalAlpha = 0.5;
   g.font = "400 18px ui-monospace, monospace";
   g.letterSpacing = "4px";
-  g.fillText("UC-01  ·  2026", 52, S - 44);
+  g.fillText("UDV-01  ·  2026", 52, S - 44);
   const tex = new THREE.CanvasTexture(canvas);
   tex.colorSpace = THREE.SRGBColorSpace;
   return tex;
@@ -210,7 +210,7 @@ export default function ChipCore({ motion, quality }) {
           totalEmissiveRadiance *= (0.22 + 1.9 * wave) * uIntro;`,
         );
     };
-    boardTop.customProgramCacheKey = () => "ucchas-chip-board";
+    boardTop.customProgramCacheKey = () => "udvoy-chip-board";
     // dim the base colour so the traces read as copper on a dark board when they aren't lit
     boardTop.color.setScalar(0.18);
 
