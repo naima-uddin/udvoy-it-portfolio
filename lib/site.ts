@@ -23,7 +23,7 @@ export const SITE = {
 export const SECTIONS = [
   { id: "services", label: "Services" },
   { id: "projects", label: "Work" },
-  { id: "hiring", label: "Hire talent" },
+  { id: "hiring", label: "Remote hiring" },
   { id: "process", label: "Process" },
   { id: "team", label: "Team" },
   { id: "faq", label: "FAQ" },
@@ -45,9 +45,9 @@ export type IconName = "bag" | "cart" | "browser" | "people" | "phone" | "pen" |
 
 /** reasons to choose UDVOY IT, kept short (from the brand messaging) */
 export const WHY = [
+  { title: "Commerce focus", text: "Shopify and e-commerce stores are our core work." },
+  { title: "Managed remote teams", text: "We hire remote employees and manage them for you." },
   { title: "Our mission", text: "Empowering ideas through technology, and making it work for everyone." },
-  { title: "Our vision", text: "Building a smarter digital future, one project at a time." },
-  { title: "One team", text: "Developers, SEO specialists, researchers and support under one roof." },
   { title: "Your success", text: "Your vision. Our innovation. One shared success." },
 ];
 
@@ -66,7 +66,7 @@ export type Service = {
   href?: string;
 };
 
-/** the main services first (Shopify, e-commerce, web, remote hiring), then the rest */
+/** the main services first (Shopify, e-commerce, remote hiring & management, plus web), then the rest */
 export const SERVICES: Service[] = [
   {
     main: "shopify",
@@ -88,8 +88,8 @@ export const SERVICES: Service[] = [
   },
   {
     main: "hiring",
-    title: "Remote hiring",
-    text: "Skilled developers and designers for your team.",
+    title: "Remote hiring & management",
+    text: "We hire skilled remote employees and manage them for you.",
     icon: "people",
     href: "#hiring",
   },
@@ -103,7 +103,7 @@ export const SERVICES: Service[] = [
 export const HIRING = {
   modes: [
     { title: "Hire through UDVOY IT", text: "We find and hire the right person. You manage their work." },
-    { title: "Fully managed team", text: "We hire the team and manage it for you." },
+    { title: "Fully managed team", text: "We hire the team, manage their daily work and report to you." },
   ],
   roles: [
     "Shopify developer",
@@ -169,7 +169,7 @@ export const TESTIMONIALS: { quote: string; name: string; role: string; company:
 export const FAQ = [
   {
     q: "What does UDVOY IT do?",
-    a: "We build Shopify stores, e-commerce sites and websites, and offer SEO, data entry and research, customer support and remote hiring.",
+    a: "Our main work is Shopify stores, e-commerce, and hiring and managing remote employees. We also build websites and offer SEO, data research and customer support.",
   },
   {
     q: "How much does a project cost?",
@@ -180,8 +180,8 @@ export const FAQ = [
     a: "Most websites and stores take a few weeks. Bigger projects take one to three months.",
   },
   {
-    q: "How does remote hiring work?",
-    a: "Tell us the role. We send checked candidates, you choose, and we handle the contract and pay.",
+    q: "How do remote hiring and management work?",
+    a: "Tell us the role. We send checked candidates, you choose, and we handle the contract and pay. If you like, we also manage their daily work for you.",
   },
   {
     q: "Do you help after launch?",

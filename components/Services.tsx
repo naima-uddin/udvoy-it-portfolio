@@ -10,7 +10,7 @@ let small = 0;
 const TILES = SERVICES.map((s) => ({ ...s, area: s.main ?? `s${++small}` }));
 
 /**
- * Services as a bento grid: the four main services (Shopify, e-commerce, web, remote hiring) get
+ * Services as a bento grid: the main services (Shopify, e-commerce, remote hiring & management, web) get
  * large tiles with a small product mock-up; the rest are compact tiles.
  */
 export default function Services() {
@@ -22,7 +22,8 @@ export default function Services() {
           Everything you need to <em>grow digitally</em>
         </h2>
         <p className="lead rise" style={vars({ "--i": 2 })}>
-          Shopify, e-commerce, websites and remote hiring, plus SEO, data research and customer support.
+          Our core work is Shopify, e-commerce, and hiring and managing remote employees. We also build websites and offer
+          SEO, data research and customer support.
         </p>
       </Track>
 

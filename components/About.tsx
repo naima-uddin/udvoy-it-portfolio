@@ -14,7 +14,7 @@ export default function About() {
         <h1 className="about-h1">
           {/* the {" "} spaces keep the words apart in the page text that search engines read */}
           <span className="kicker kicker-wrap">
-            {SITE.name} · {SITE.slogan}
+            {SITE.name} · Shopify, e-commerce & remote teams
           </span>{" "}
           <span className="about-title">
             <span>Turning ideas</span> <span>into digital</span>{" "}
@@ -26,8 +26,8 @@ export default function About() {
 
         <div className="about-foot">
           <p className="lead">
-            We don&apos;t just build websites or provide digital services. We build opportunities, create solutions
-            and help businesses move forward.
+            We build and grow <span className="nowrap">Shopify</span> and{" "}
+            <span className="nowrap">e-commerce</span> stores, and hire and manage remote employees for your business.
           </p>
           <div className="actions">
             <a className="btn" href="#contact">

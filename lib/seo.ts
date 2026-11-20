@@ -18,11 +18,11 @@ export const SITE_URL = (
 ).replace(/\/+$/, "");
 
 /** about 60 characters: what search results show as the link */
-export const TITLE = "UDVOY IT | Web, E-commerce, SEO & IT Services Company";
+export const TITLE = "UDVOY IT | Shopify, E-commerce & Remote Hiring Company";
 
 /** about 155 characters: the snippet under the link in search results */
 export const DESCRIPTION =
-  "UDVOY IT turns ideas into digital success: Shopify and e-commerce stores, websites, SEO, data research, customer support and remote hiring for growing businesses.";
+  "UDVOY IT builds and grows Shopify and e-commerce stores, and hires and manages skilled remote employees for your business. Also websites, SEO and support.";
 
 /** shown on social shares and in the share image */
 export const TAGLINE = "Innovate. Create. Elevate.";
@@ -46,6 +46,9 @@ export const KEYWORDS = [
   "custom software development",
   "IT company Bangladesh",
   "remote hiring",
+  "remote employee management",
+  "managed remote team",
+  "hire remote employees",
   "hire remote developers",
   "IT company",
 ];
@@ -91,6 +94,7 @@ export function jsonLd() {
           "Customer support",
           "Custom software",
           "Remote hiring",
+          "Remote team management",
         ],
         contactPoint: {
           "@type": "ContactPoint",

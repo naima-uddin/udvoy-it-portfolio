@@ -11,11 +11,11 @@ const logoSrc = `data:image/png;base64,${await readFile(join(process.cwd(), "pub
  * build time. Next.js adds the og:image tags (and X falls back to the same image).
  */
 
-export const alt = "UDVOY IT: Innovate. Create. Elevate. Web, e-commerce, SEO and IT services";
+export const alt = "UDVOY IT: Shopify, e-commerce, and remote hiring & management";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const SERVICES = ["Shopify", "E-commerce", "Web", "SEO", "Remote hiring"];
+const SERVICES = ["Shopify", "E-commerce", "Remote hiring & management"];
 
 export default function Image() {
   const words = TAGLINE.split(" ");

@@ -3,17 +3,17 @@ import Track from "./Track";
 import { vars } from "@/lib/css";
 import { HIRING } from "@/lib/site";
 
-/** Remote hiring: two ways to work with us, the roles we fill, and one call to action. */
+/** Remote hiring & management: two ways to work with us, the roles we fill, and one call to action. */
 export default function Hiring() {
   return (
     <Track name="hiring" id="hiring" className="section hiring">
       <Track as="div" mode="enter" className="sec-head">
-        <p className="kicker rise">( Remote talent )</p>
+        <p className="kicker rise">( Remote employees )</p>
         <h2 className="h2 rise" style={vars({ "--i": 1 })}>
-          Hire your <em>remote team</em>
+          Hire &amp; manage your <em>remote team</em>
         </h2>
         <p className="lead rise" style={vars({ "--i": 2 })}>
-          Skilled developers and designers, checked by our senior team.
+          We find, hire and manage skilled remote employees, so you can focus on your business.
         </p>
       </Track>
 
