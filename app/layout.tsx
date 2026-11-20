@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Syne } from "next/font/google";
 import { SITE } from "@/lib/site";
-import { DESCRIPTION, GOOGLE_VERIFICATION, KEYWORDS, SITE_URL, TITLE } from "@/lib/seo";
+import { BING_VERIFICATION, DESCRIPTION, GOOGLE_VERIFICATION, KEYWORDS, SITE_URL, TITLE } from "@/lib/seo";
 import "./globals.css";
 
 const display = Syne({ subsets: ["latin"], variable: "--font-display", display: "swap" });
@@ -17,7 +17,8 @@ const serif = Instrument_Serif({
 // and app/apple-icon.png, and the sitemap, robots.txt and manifest from their files in app/
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: TITLE,
+  // pages added later only set their own part, e.g. "Shopify development" → "Shopify development | UDVOY IT"
+  title: { default: TITLE, template: `%s | ${SITE.name}` },
   description: DESCRIPTION,
   keywords: KEYWORDS,
   applicationName: SITE.name,
@@ -52,7 +53,11 @@ export const metadata: Metadata = {
   },
   // stop phones turning numbers and addresses in the text into links
   formatDetection: { telephone: false, address: false, email: false },
-  ...(GOOGLE_VERIFICATION ? { verification: { google: GOOGLE_VERIFICATION } } : {}),
+  // Search Console / Bing Webmaster ownership codes, added only once set (see lib/seo.ts)
+  verification: {
+    ...(GOOGLE_VERIFICATION ? { google: GOOGLE_VERIFICATION } : {}),
+    ...(BING_VERIFICATION ? { other: { "msvalidate.01": BING_VERIFICATION } } : {}),
+  },
 };
 
 export const viewport: Viewport = {

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { engine } from "@/lib/engine";
 import { vars } from "@/lib/css";
@@ -97,8 +98,8 @@ export default function Nav() {
       <div ref={shade} className="nav-shade" aria-hidden />
       <nav ref={navEl} className="nav" aria-label="Main">
         <a href="#top" className="logo" onClick={open ? go : undefined}>
-          {/* eslint-disable-next-line @next/next/no-img-element -- small local logo, sized by CSS */}
-          <img src="/brand/udvoy-logo-white.png" alt={SITE.name} width={1089} height={242} />
+          {/* shown up to 30px tall (see .logo img); next/image serves it resized as WebP/AVIF instead of the 84 KB PNG */}
+          <Image src="/brand/udvoy-logo-white.png" alt={SITE.name} width={135} height={30} loading="eager" />
         </a>
         <div className="nav-links">
           {BAR_LINKS.map((s) => (

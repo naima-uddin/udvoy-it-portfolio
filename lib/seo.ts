@@ -59,6 +59,15 @@ export const SOCIAL_PROFILES: string[] = [];
 /** Google Search Console: set NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION to the code it gives you */
 export const GOOGLE_VERIFICATION = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 
+/** Bing Webmaster Tools (also feeds DuckDuckGo, Yahoo and ChatGPT search): set NEXT_PUBLIC_BING_SITE_VERIFICATION */
+export const BING_VERIFICATION = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION;
+
+/** the placeholder address isn't published in the structured data; it shows up once SITE.email is real */
+export const PUBLIC_EMAIL = /@example.(com|org|net)$/i.test(SITE.email) ? undefined : SITE.email;
+
+/** the share image made by app/opengraph-image.tsx */
+export const OG_IMAGE = { url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630 };
+
 /**
  * Structured data for search engines and AI assistants: who UDVOY IT is, the website, this page,
  * the services offered and the FAQ. One graph, with the parts linked by @id.
@@ -66,6 +75,18 @@ export const GOOGLE_VERIFICATION = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICAT
 export function jsonLd() {
   const org = `${SITE_URL}/#organization`;
   const website = `${SITE_URL}/#website`;
+  const email = PUBLIC_EMAIL ? { email: PUBLIC_EMAIL } : {};
+  // the team as shown on the page (public details only), so search engines see the real people behind UDVOY IT
+  const person = (m: (typeof TEAM)[number]) => ({
+    "@type": "Person",
+    "@id": `${SITE_URL}/#${m.id.toLowerCase()}`,
+    name: m.name,
+    jobTitle: m.role,
+    worksFor: { "@id": org },
+    ...(m.photo ? { image: `${SITE_URL}${m.photo}` } : {}),
+    ...(m.linkedin ? { sameAs: [m.linkedin] } : {}),
+  });
+  const people = TEAM.map(person);
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -73,14 +94,17 @@ export function jsonLd() {
         "@type": "Organization",
         "@id": org,
         name: SITE.name,
+        alternateName: ["UDVOY", "Udvoy IT"],
         url: `${SITE_URL}/`,
         logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png`, width: 512, height: 512 },
         image: `${SITE_URL}/logo.png`,
         description: DESCRIPTION,
-        email: SITE.email,
+        ...email,
         slogan: TAGLINE,
         foundingDate: String(SITE.founded),
         numberOfEmployees: { "@type": "QuantitativeValue", value: TEAM.length },
+        founder: TEAM.filter((m) => /founder/i.test(m.role)).map((m) => ({ "@id": `${SITE_URL}/#${m.id.toLowerCase()}` })),
+        employee: TEAM.map((m) => ({ "@id": `${SITE_URL}/#${m.id.toLowerCase()}` })),
         areaServed: "Worldwide",
         knowsAbout: [
           "Shopify",
@@ -99,7 +123,8 @@ export function jsonLd() {
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "sales",
-          email: SITE.email,
+          ...email,
+          url: `${SITE_URL}/#contact`,
           availableLanguage: ["English"],
         },
         ...(SOCIAL_PROFILES.length ? { sameAs: SOCIAL_PROFILES } : {}),
@@ -124,8 +149,9 @@ export function jsonLd() {
         url: `${SITE_URL}/`,
         name: SITE.name,
         description: DESCRIPTION,
+        alternateName: ["UDVOY", "Udvoy IT"],
         publisher: { "@id": org },
-        inLanguage: "en",
+        inLanguage: "en-US",
       },
       {
         "@type": "WebPage",
@@ -135,9 +161,10 @@ export function jsonLd() {
         description: DESCRIPTION,
         isPartOf: { "@id": website },
         about: { "@id": org },
-        primaryImageOfPage: `${SITE_URL}/opengraph-image`,
-        inLanguage: "en",
+        primaryImageOfPage: { "@type": "ImageObject", ...OG_IMAGE },
+        inLanguage: "en-US",
       },
+      ...people,
       {
         "@type": "FAQPage",
         "@id": `${SITE_URL}/#faq`,

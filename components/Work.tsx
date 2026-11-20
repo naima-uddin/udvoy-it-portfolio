@@ -2,6 +2,7 @@ import Image, { type StaticImageData } from "next/image";
 import Track from "./Track";
 import { vars } from "@/lib/css";
 import aether from "@/assets/projects/aether.jpg";
+import autospecshub from "@/assets/projects/autospecshub.jpg";
 import drift from "@/assets/projects/drift.jpg";
 import halo from "@/assets/projects/halo.jpg";
 import meridian from "@/assets/projects/meridian.jpg";
@@ -20,10 +21,25 @@ type Project = {
   alt: string;
   /** which part of the photo to keep when the card crops it (CSS object-position) */
   focus?: string;
+  /** the live site, linked from the project name */
+  url?: string;
 };
 
-// Sample case studies, a mix of the main services: replace with your own projects (photo credits in assets/projects/CREDITS.md)
+// AutoSpecsHub is a real UDVOY IT project; the others are sample case studies to replace with your own
+// (photo credits in assets/projects/CREDITS.md)
 const PROJECTS: Project[] = [
+  {
+    name: "AutoSpecsHub",
+    sector: "Automotive · Web platform",
+    year: "2026",
+    summary: "A car specs site: find any car by body type, brand, price and detailed specs.",
+    result: ["157", "car brands to browse"],
+    services: ["Web development", "Search & filters"],
+    image: autospecshub,
+    alt: "The AutoSpecsHub car search: body types, brands and spec filters",
+    focus: "50% 0%",
+    url: "https://www.autospecshub.com/",
+  },
   {
     name: "Prism",
     sector: "Fashion · Shopify Plus",
@@ -121,9 +137,17 @@ export default function Work() {
               <span className="card-sector">{p.sector}</span>
               <div className="card-info">
                 <span className="card-num">
-                  0{i + 1} · {p.year}
+                  {String(i + 1).padStart(2, "0")} · {p.year}
                 </span>
-                <h3>{p.name}</h3>
+                <h3>
+                  {p.url ? (
+                    <a href={p.url} target="_blank" rel="noreferrer">
+                      {p.name} <span aria-hidden>↗</span>
+                    </a>
+                  ) : (
+                    p.name
+                  )}
+                </h3>
                 <p className="card-sum">{p.summary}</p>
                 <div className="card-foot">
                   <p className="card-result">

@@ -98,8 +98,7 @@ function Code() {
 
 const PEOPLE = [
   ["SD", "Shopify developer", "Senior"],
-  ["UX", "UI/UX designer", "Mid-level"],
-  ["FS", "Full-stack developer", "Senior"],
+  ["VA", "Virtual assistant", "Managed"],
 ];
 
 /** Remote hiring: a shortlist of vetted candidates */
