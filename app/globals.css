@@ -1746,14 +1746,48 @@ em {
   background: var(--fg);
   border-color: var(--fg);
 }
-/* four columns on wide screens, three on tablets, two on phones: works for any team size */
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: clamp(0.7rem, 1.4vw, 1.2rem);
+/* the team: one row of small cards that scrolls sideways (on its own when it doesn't fit) */
+.team-rail {
+  --card-w: clamp(128px, 11.5vw, 156px);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  /* room for the hover lift, so it isn't clipped */
+  padding-block: 4px;
+}
+.team-rail::-webkit-scrollbar {
+  display: none;
+}
+/* when it loops, the ends fade out so cards glide in and out */
+.team-rail.is-loop {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.team-row {
+  display: flex;
+  gap: clamp(0.6rem, 1.1vw, 0.9rem);
+  width: max-content;
   margin: 0;
   padding: 0;
   list-style: none;
+}
+.team-row .member {
+  flex: none;
+  width: var(--card-w);
+  padding: 0.4rem;
+  border-radius: 14px;
+}
+.team-row .member-photo {
+  border-radius: 10px;
+}
+.team-row .member-info {
+  padding: 0.55rem 0.2rem 0.15rem;
+}
+.team-row .member-info h3 {
+  font-size: 0.74rem;
+}
+.team-row .member-role {
+  font-size: 0.68rem;
 }
 .member {
   position: relative;
@@ -1850,20 +1884,7 @@ em {
     border-color: var(--fg);
   }
 }
-.team-more {
-  display: flex;
-  justify-content: center;
-  margin-top: clamp(1.4rem, 3vw, 2rem);
-}
-@media (max-width: 1200px) {
-  .team-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
 @media (max-width: 900px) {
-  .team-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
   /* leadership cards stack as full-width rows, so the third never sits alone */
   .team-leads {
     grid-template-columns: minmax(0, 1fr);
@@ -1871,8 +1892,11 @@ em {
   }
 }
 @media (max-width: 600px) {
-  .team-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* the row runs edge to edge on phones */
+  .team-rail {
+    --card-w: 124px;
+    margin-inline: calc(-1 * var(--pad));
+    padding-inline: var(--pad);
   }
   .member {
     padding: 0.4rem;
