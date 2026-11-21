@@ -18,7 +18,7 @@ export function GET() {
     "",
     "## Services",
     "",
-    ...SERVICES.map((s) => `- **${s.title}**: ${s.text}`),
+    ...SERVICES.map((s) => `- [${s.title}](${SITE_URL}/services/${s.slug}): ${s.text}`),
     "",
     "## Remote hiring & management",
     "",

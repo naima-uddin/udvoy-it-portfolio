@@ -137,6 +137,7 @@ export function jsonLd() {
               "@type": "Service",
               name: s.title,
               description: s.text,
+              url: `${SITE_URL}/services/${s.slug}`,
               provider: { "@id": org },
               areaServed: "Worldwide",
             },

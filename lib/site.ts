@@ -62,8 +62,8 @@ export type Service = {
   icon: IconName;
   /** set on the main services */
   main?: MainService;
-  /** optional in-page link, e.g. "#hiring" */
-  href?: string;
+  /** its own page at /services/[slug] (content in lib/service-pages.ts) */
+  slug: string;
 };
 
 /** the main services first (Shopify, e-commerce, remote hiring & management, plus web), then the rest */
@@ -73,29 +73,32 @@ export const SERVICES: Service[] = [
     title: "Shopify development",
     text: "New stores, custom themes and apps, and moving your store to Shopify.",
     icon: "bag",
+    slug: "shopify-development",
   },
   {
     main: "commerce",
     title: "E-commerce",
     text: "Online stores on WooCommerce, BigCommerce or custom code.",
     icon: "cart",
+    slug: "ecommerce-development",
   },
   {
     main: "web",
     title: "Web development",
     text: "Company websites, web apps and custom software.",
     icon: "browser",
+    slug: "web-development",
   },
   {
     main: "hiring",
     title: "Remote hiring & management",
     text: "We hire skilled remote employees and manage them for you.",
     icon: "people",
-    href: "#hiring",
+    slug: "remote-hiring",
   },
-  { title: "SEO", text: "Get found on Google and grow your organic traffic.", icon: "search" },
-  { title: "Data entry & research", text: "Accurate data entry, list building and web research.", icon: "table" },
-  { title: "Customer support", text: "Friendly support for your customers by chat, email and phone.", icon: "chat" },
+  { title: "SEO", text: "Get found on Google and grow your organic traffic.", icon: "search", slug: "seo" },
+  { title: "Data entry & research", text: "Accurate data entry, list building and web research.", icon: "table", slug: "data-entry" },
+  { title: "Customer support", text: "Friendly support for your customers by chat, email and phone.", icon: "chat", slug: "customer-support" },
 ];
 
 /* ------------------------------------------------------------------ remote hiring */

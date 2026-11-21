@@ -1,3 +1,4 @@
+import Link from "next/link";
 import LineIcon from "./LineIcon";
 import ServiceArt from "./ServiceArt";
 import Spotlight from "./Spotlight";
@@ -33,20 +34,16 @@ export default function Services() {
             key={s.title}
             as="div"
             mode="enter"
-            className={`tile tile-${s.area} rise${s.href ? " is-link" : ""}`}
+            className={`tile tile-${s.area} rise is-link`}
             style={vars({ "--i": i % 3 })}
           >
             <div className="tile-text">
               <LineIcon name={s.icon} />
               <h3>
-                {s.href ? (
-                  // the link covers the whole tile (see .is-link in the CSS)
-                  <a href={s.href}>
-                    {s.title} <span aria-hidden>→</span>
-                  </a>
-                ) : (
-                  s.title
-                )}
+                {/* each service has its own page; the link covers the whole tile (see .is-link in the CSS) */}
+                <Link href={`/services/${s.slug}`}>
+                  {s.title} <span aria-hidden>→</span>
+                </Link>
               </h3>
               <p>{s.text}</p>
             </div>
