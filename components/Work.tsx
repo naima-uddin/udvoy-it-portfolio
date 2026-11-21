@@ -3,6 +3,7 @@ import Track from "./Track";
 import { vars } from "@/lib/css";
 import aether from "@/assets/projects/aether.jpg";
 import autospecshub from "@/assets/projects/autospecshub.jpg";
+import chronologicalAge from "@/assets/projects/chronological-age.jpg";
 import drift from "@/assets/projects/drift.jpg";
 import halo from "@/assets/projects/halo.jpg";
 import meridian from "@/assets/projects/meridian.jpg";
@@ -25,7 +26,7 @@ type Project = {
   url?: string;
 };
 
-// AutoSpecsHub is a real UDVOY IT project; the others are sample case studies to replace with your own
+// AutoSpecsHub and the Chronological Age Calculator are real UDVOY IT projects; the others are sample case studies to replace with your own
 // (photo credits in assets/projects/CREDITS.md)
 const PROJECTS: Project[] = [
   {
@@ -39,6 +40,18 @@ const PROJECTS: Project[] = [
     alt: "The AutoSpecsHub car search: body types, brands and spec filters",
     focus: "50% 0%",
     url: "https://www.autospecshub.com/",
+  },
+  {
+    name: "Chronological Age Calculator",
+    sector: "Utility · Web tool",
+    year: "2026",
+    summary: "Exact age in years, months and days from any date of birth, with PDF download and share cards.",
+    result: ["Y · M · D", "exact age in one click"],
+    services: ["Web development", "SEO"],
+    image: chronologicalAge,
+    alt: "The Chronological Age Calculator: name, date of birth and age-at-date fields with calculate, PDF and share buttons",
+    focus: "50% 0%",
+    url: "https://www.calculatechronologicalage.com/",
   },
   {
     name: "Prism",
