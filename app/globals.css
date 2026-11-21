@@ -1709,7 +1709,7 @@ em {
   flex-direction: row;
   align-items: center;
   gap: 1.1rem;
-  padding: 0.7rem;
+  padding: 0.6rem;
   border-radius: 20px;
   background:
     linear-gradient(160deg, rgba(183, 156, 255, 0.1), rgba(255, 255, 255, 0.01)),
@@ -1718,7 +1718,11 @@ em {
 .member.member-lead .member-photo {
   flex: none;
   width: clamp(96px, 9vw, 124px);
+  aspect-ratio: 4 / 5;
   border-radius: 14px;
+}
+.member.member-lead .member-photo img {
+  object-position: center top;
 }
 .member.member-lead .member-info {
   padding: 0;
@@ -1736,13 +1740,13 @@ em {
   align-items: center;
   justify-content: space-between;
   gap: 0 1.5rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.8rem;
 }
 .team-bar .team-label {
   margin-bottom: 0;
 }
 /* department filters reuse the technology tabs' look (and their swipeable row on phones) */
-.team-filters {
+.team-bar .team-filters {
   margin-bottom: 0;
 }
 .team-filters button[aria-pressed="true"] {
