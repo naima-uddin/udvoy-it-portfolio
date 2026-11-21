@@ -3,12 +3,12 @@ import Track from "./Track";
 import { vars } from "@/lib/css";
 import aether from "@/assets/projects/aether.jpg";
 import autospecshub from "@/assets/projects/autospecshub.jpg";
+import beautyStore from "@/assets/projects/beauty-store.jpg";
 import chronologicalAge from "@/assets/projects/chronological-age.jpg";
-import drift from "@/assets/projects/drift.jpg";
-import halo from "@/assets/projects/halo.jpg";
+import clinicWebsite from "@/assets/projects/clinic-website.jpg";
+import fashionStore from "@/assets/projects/fashion-store.jpg";
 import meridian from "@/assets/projects/meridian.jpg";
 import monolith from "@/assets/projects/monolith.jpg";
-import prism from "@/assets/projects/prism.jpg";
 
 type Project = {
   name: string;
@@ -26,8 +26,9 @@ type Project = {
   url?: string;
 };
 
-// AutoSpecsHub and the Chronological Age Calculator are real UDVOY IT projects; the others are sample case studies to replace with your own
-// (photo credits in assets/projects/CREDITS.md)
+// AutoSpecsHub and the Chronological Age Calculator are real UDVOY IT projects; the cards after them
+// show the types of project we build, with what each includes (no made-up clients or numbers).
+// Swap them for real client projects as they go live (photo credits in assets/projects/CREDITS.md)
 const PROJECTS: Project[] = [
   {
     name: "AutoSpecsHub",
@@ -54,68 +55,69 @@ const PROJECTS: Project[] = [
     url: "https://www.calculatechronologicalage.com/",
   },
   {
-    name: "Prism",
-    sector: "Fashion · Shopify Plus",
-    year: "2025",
-    summary: "A fashion brand moved to Shopify Plus with a new custom design.",
-    result: ["+38%", "conversion rate"],
-    services: ["Migration", "Shopify Plus"],
-    image: prism,
-    alt: "Clothing rails with neutral-toned garments in a bright studio",
-    focus: "50% 70%",
+    name: "Fashion E-commerce Store",
+    sector: "Fashion · Shopify",
+    year: "Project type",
+    summary: "A clothing store on Shopify with a custom design, size filters, collections and fast mobile checkout.",
+    result: ["Shopify", "custom theme"],
+    services: ["Shopify", "Store design"],
+    image: fashionStore,
+    alt: "A fashion store page: an 'Up to 30% off' banner over a rail of women's clothes, with secure payment and support badges",
+    focus: "72% 50%",
   },
   {
-    name: "Aether",
-    sector: "Fintech · Web & mobile",
-    year: "2026",
-    summary: "A payments app for iOS, Android and the web.",
-    result: ["4.8★", "app store rating"],
-    services: ["Mobile", "Web"],
-    image: aether,
-    alt: "Hands holding a phone showing a money transfer screen",
+    name: "Doctor & Clinic Website",
+    sector: "Healthcare · Web app",
+    year: "Project type",
+    summary: "A clinic website where patients find doctors, book appointments online and get reminders.",
+    result: ["24/7", "online appointment booking"],
+    services: ["Web app", "Booking system"],
+    image: clinicWebsite,
+    alt: "A medical center website: 'Your health is our priority' over a surgeon's portrait, with an appointment form and opening hours",
+    focus: "45% 0%",
   },
   {
-    name: "Meridian",
-    sector: "Retail · Remote team",
-    year: "2024",
-    summary: "A remote team of nine, hired and managed by us.",
-    result: ["3 weeks", "from brief to full team"],
-    services: ["Remote hiring", "Managed team"],
-    image: meridian,
-    alt: "A laptop showing a video meeting with many participants, next to a coffee mug",
-    focus: "78% 50%",
-  },
-  {
-    name: "Monolith",
+    name: "Wholesale B2B Store",
     sector: "Wholesale · B2B e-commerce",
-    year: "2025",
-    summary: "A wholesale store connected to the warehouse system.",
-    result: ["3×", "faster order processing"],
+    year: "Project type",
+    summary: "A wholesale store with customer price lists, bulk ordering and stock synced with the warehouse.",
+    result: ["Bulk", "orders & price lists"],
     services: ["Shopify B2B", "Integrations"],
     image: monolith,
     alt: "A long warehouse aisle with tall shelves of cardboard boxes",
     focus: "50% 60%",
   },
   {
-    name: "Halo",
-    sector: "Healthcare · Web app",
-    year: "2025",
-    summary: "Online booking and video visits for clinics.",
-    result: ["12k", "consultations a month"],
-    services: ["Web", "Mobile"],
-    image: halo,
-    alt: "A doctor typing on a keyboard, with a stethoscope on the desk",
-    focus: "22% 50%",
+    name: "Payments App",
+    sector: "Fintech · Web & mobile",
+    year: "Project type",
+    summary: "A money transfer app for iOS, Android and the web, with secure sign-in and payment history.",
+    result: ["iOS · Android", "and web"],
+    services: ["Mobile", "Web"],
+    image: aether,
+    alt: "Hands holding a phone showing a money transfer screen",
   },
   {
-    name: "Drift",
+    name: "Beauty Store Makeover",
     sector: "Beauty · Shopify CRO",
-    year: "2024",
-    summary: "A faster Shopify store that sells more.",
-    result: ["+27%", "conversion rate"],
-    services: ["CRO", "Speed"],
-    image: drift,
-    alt: "Performance charts on a laptop screen",
+    year: "Project type",
+    summary: "A faster beauty store with a cleaner product page and checkout, built to turn visitors into buyers.",
+    result: ["Faster", "pages & checkout"],
+    services: ["CRO", "Speed", "SEO"],
+    image: beautyStore,
+    alt: "A cosmetics store homepage: 'Cosmetics that everyone loves!' beside a pink splash and a product tube, with product cards below",
+    focus: "70% 50%",
+  },
+  {
+    name: "Remote Support Team",
+    sector: "Retail · Remote team",
+    year: "Project type",
+    summary: "A remote customer support and data team for an online store, hired and managed by UDVOY IT.",
+    result: ["Managed", "daily by us"],
+    services: ["Remote hiring", "Managed team"],
+    image: meridian,
+    alt: "A laptop showing a video meeting with many participants, next to a coffee mug",
+    focus: "78% 50%",
   },
 ];
 
