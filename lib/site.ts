@@ -153,7 +153,7 @@ export const TEAM: Member[] = [
   { id: "UDV-EMP-010", name: "Fahim Ifteker Ahmed", role: "Customer Service Representative", focus: "Customer Service", photo: "/team/fahim-ifteker-ahmed.jpg" },
   { id: "UDV-EMP-011", name: "Md. Motaleb Hosen", role: "Data Entry Executive", focus: "Data Research", photo: "/team/motaleb-hosen.jpg" },
   { id: "UDV-EMP-012", name: "Md. Mamunur Rashid", role: "Data Entry Executive", focus: "Data Research", photo: "/team/mamunur-rashid.jpg" },
-  { id: "UDV-EMP-013", name: "Rai An", role: "Web Developer", focus: "Information Technology" }, // CONFIRM: add a photo at /team/rai-an.jpg
+  { id: "UDV-EMP-013", name: "Rai An", role: "Web Developer", focus: "Information Technology", photo: "/team/rai-an.jpg" },
 ];
 
 /* ------------------------------------------------------------------ testimonials */

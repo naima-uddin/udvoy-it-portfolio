@@ -1781,11 +1781,23 @@ em {
   padding: 0.4rem;
   border-radius: 14px;
 }
+/* a slightly shorter frame for the team row; pinned to the top so only a little suit is hidden */
 .team-row .member-photo {
+  aspect-ratio: 4 / 5;
   border-radius: 10px;
 }
+.team-row .member-photo img {
+  object-position: center top;
+}
 .team-row .member-info {
-  padding: 0.55rem 0.2rem 0.15rem;
+  padding: 0.45rem 0.2rem 0.1rem;
+}
+/* name and role stay on one line each; anything still too long ends in "…" (full text on hover) */
+.team-row .member-info h3,
+.team-row .member-role {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .team-row .member-info h3 {
   font-size: 0.74rem;
@@ -1815,9 +1827,10 @@ em {
     transform: translateY(14px);
   }
 }
+/* portraits are 3:4 (public/team/*.jpg are 600x800), so the frame matches and nothing is cropped */
 .member-photo {
   position: relative;
-  aspect-ratio: 1;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
   border-radius: 13px;
   background: #0e0c18;
@@ -1880,9 +1893,6 @@ em {
   .member:hover {
     border-color: rgba(183, 156, 255, 0.45);
     transform: translateY(-3px);
-  }
-  .member:hover .member-photo img {
-    transform: scale(1.05);
   }
   .member-link:hover {
     border-color: var(--fg);

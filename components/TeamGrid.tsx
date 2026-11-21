@@ -29,15 +29,15 @@ function Card({ m, i, lead = false, clone = false }: { m: Member; i: number; lea
     >
       <div className="member-photo">
         {m.photo ? (
-          // eslint-disable-next-line @next/next/no-img-element -- small local portraits, sized by CSS
-          <img src={m.photo} alt={clone ? "" : m.name} loading="lazy" width={400} height={400} />
+          // eslint-disable-next-line @next/next/no-img-element -- small local 3:4 portraits (600x800), sized by CSS
+          <img src={m.photo} alt={clone ? "" : m.name} loading="lazy" width={600} height={800} />
         ) : (
           <span aria-hidden>{initials(m.name)}</span>
         )}
       </div>
       <div className="member-info">
-        <h3>{m.name}</h3>
-        <p className="member-role">{m.role}</p>
+        <h3 title={m.name}>{m.name}</h3>
+        <p className="member-role" title={m.role}>{m.role}</p>
       </div>
       {m.linkedin && (
         <a className="member-link" href={m.linkedin} target="_blank" rel="noreferrer" aria-label={`${m.name} on LinkedIn`}>
