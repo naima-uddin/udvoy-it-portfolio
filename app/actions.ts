@@ -24,13 +24,52 @@ const text = (data: FormData, key: string) => {
   return typeof v === "string" ? v.trim() : "";
 };
 
+const escapeHtml = (value: string) =>
+  value.replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[char] ?? char);
+
+async function sendEmail(values: Record<ContactField, string>) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return false;
+
+  const from = process.env.CONTACT_FROM_EMAIL ?? "UDVOY IT Website <noreply@udvoy.com>";
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${apiKey}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      from,
+      to: [SITE.email],
+      reply_to: values.email,
+      subject: `Website enquiry from ${values.name}`,
+      text: `Name: ${values.name}\nEmail: ${values.email}\n\nMessage:\n${values.message}`,
+      html: `
+        <h2>New website enquiry</h2>
+        <p><b>Name:</b> ${escapeHtml(values.name)}</p>
+        <p><b>Email:</b> ${escapeHtml(values.email)}</p>
+        <p><b>Message:</b></p>
+        <p>${escapeHtml(values.message).replace(/\n/g, "<br />")}</p>
+      `,
+    }),
+    signal: AbortSignal.timeout(10_000),
+  });
+
+  if (!res.ok) {
+    const detail = await res.text().catch(() => "");
+    throw new Error(`Resend answered ${res.status}${detail ? `: ${detail}` : ""}`);
+  }
+  return true;
+}
+
 /**
  * Contact form handler. A Server Action is a public POST endpoint, so every field is
  * re-validated here; the browser's checks are only a convenience.
  *
- * Delivery: set CONTACT_WEBHOOK_URL to any endpoint that accepts a JSON POST (your own
- * backend, Zapier / Make / n8n, a Slack incoming webhook...). Without it, development
- * logs the message to the terminal, and production tells the visitor to email instead.
+ * Delivery: set RESEND_API_KEY to send directly to SITE.email. The sending domain must
+ * be verified in Resend. CONTACT_WEBHOOK_URL remains available as a fallback.
+ * Without either, development logs the message to the terminal and production reports an
+ * offline form.
  */
 export async function sendContact(_prev: ContactState, data: FormData): Promise<ContactState> {
   const values = {
@@ -53,21 +92,26 @@ export async function sendContact(_prev: ContactState, data: FormData): Promise<
     return { status: "error", message: "Please check the highlighted fields.", errors, values };
   }
 
-  const url = process.env.CONTACT_WEBHOOK_URL;
-  if (!url) {
-    if (process.env.NODE_ENV !== "production") {
-      console.info("[contact] CONTACT_WEBHOOK_URL is not set, so this message was only logged:", values);
-      return { status: "success", message: "Thanks! (Development: the message was logged in the terminal.)" };
-    }
-    console.error("[contact] CONTACT_WEBHOOK_URL is not set; a contact form message could not be delivered.");
-    return {
-      status: "error",
-      message: `Our form is offline right now. Please email us at ${SITE.email}.`,
-      values,
-    };
-  }
-
   try {
+    if (process.env.RESEND_API_KEY) {
+      await sendEmail(values);
+      return { status: "success", message: "Thanks! We'll reply within one business day." };
+    }
+
+    const url = process.env.CONTACT_WEBHOOK_URL;
+    if (!url) {
+      if (process.env.NODE_ENV !== "production") {
+        console.info("[contact] delivery is not configured, so this message was only logged:", values);
+        return { status: "success", message: "Thanks! (Development: the message was logged in the terminal.)" };
+      }
+      console.error("[contact] neither RESEND_API_KEY nor CONTACT_WEBHOOK_URL is configured.");
+      return {
+        status: "error",
+        message: `Our form is offline right now. Please email us at ${SITE.email}.`,
+        values,
+      };
+    }
+
     const token = process.env.CONTACT_WEBHOOK_TOKEN;
     const res = await fetch(url, {
       method: "POST",

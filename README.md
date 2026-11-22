@@ -43,17 +43,28 @@ guarantees) to check before the site goes live.
 ## Contact form
 
 The form is validated in the browser and again on the server (`app/actions.ts`), and has a hidden
-spam-trap field. Submissions are sent as a JSON POST to the URL in `CONTACT_WEBHOOK_URL`: your own
-backend, Zapier / Make / n8n, or a Slack incoming webhook (the payload includes a `text` summary).
+spam-trap field. Submissions can be delivered directly to `info@udvoy.com` through Resend.
+
+1. Create a Resend API key.
+2. Verify the `udvoy.com` sending domain in Resend and add the DNS records it provides.
+3. Set these values where the site is deployed:
 
 ```bash
-# .env.local
+# .env.local or hosting environment variables
+RESEND_API_KEY=re_xxxxxxxxx
+CONTACT_FROM_EMAIL=UDVOY IT Website <noreply@udvoy.com>
+```
+
+The visitor's email is set as `reply_to`, so replying to the delivered message goes to the visitor.
+The existing webhook remains an optional fallback:
+
+```bash
 CONTACT_WEBHOOK_URL=https://your-backend.example.com/contact
 CONTACT_WEBHOOK_TOKEN=optional-secret   # sent as "Authorization: Bearer ..."
 ```
 
-Without `CONTACT_WEBHOOK_URL`, `npm run dev` logs submissions to the terminal, and a production
-build asks visitors to email the address in `lib/site.ts` instead.
+Resend takes priority when `RESEND_API_KEY` is set. Without a delivery method, `npm run dev` logs
+submissions to the terminal, and production asks visitors to email `info@udvoy.com` directly.
 
 ## SEO
 
