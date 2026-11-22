@@ -37,6 +37,9 @@ export function GET() {
     `- [Team](${SITE_URL}/#team)`,
     `- [Contact](${SITE_URL}/#contact)`,
     ...(PUBLIC_EMAIL ? [`- Email: ${PUBLIC_EMAIL}`] : []),
+    `- Phone / WhatsApp: ${SITE.phone}`,
+    `- Office: ${SITE.address.street}, ${SITE.address.locality}, ${SITE.address.region}, ${SITE.address.country} ([Google Maps](${SITE.map}))`,
+    ...SITE.social.map((s) => `- [${s.name}](${s.url})`),
     "",
   ];
   return new Response(lines.join("\n"), {

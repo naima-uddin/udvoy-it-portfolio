@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import SubPage from "@/components/SubPage";
 import { SERVICE_PAGES, servicePage } from "@/lib/service-pages";
 import { OG_IMAGE, SITE_URL } from "@/lib/seo";
 import { PROCESS, SITE } from "@/lib/site";
@@ -74,17 +74,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(page)).replace(/</g, "\\u003c") }}
       />
-      <div className="backdrop" aria-hidden />
-      <header className="sp-nav">
-        <Link href="/" className="logo">
-          <Image src="/brand/udvoy-logo-white.png" alt={SITE.name} width={135} height={30} loading="eager" />
-        </Link>
-        <Link href="/#contact" className="nav-cta">
-          Let&apos;s talk
-        </Link>
-      </header>
-
-      <main className="main sp">
+      <SubPage>
         <nav className="sp-crumbs" aria-label="Breadcrumb">
           <Link href="/">Home</Link> <span aria-hidden>/</span> <Link href="/#services">Services</Link>{" "}
           <span aria-hidden>/</span> <span aria-current="page">{page.name}</span>
@@ -171,7 +161,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
             ))}
           </ul>
         </nav>
-      </main>
+      </SubPage>
     </>
   );
 }

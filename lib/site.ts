@@ -11,7 +11,23 @@ export const SITE = {
   /** the brand slogan, shown in the hero and the share image */
   slogan: "Innovate. Create. Elevate.",
   tagline: "Empowering Businesses Through Technology.",
-  email: "hello@example.com", // CONFIRM: your real company address (not a personal Gmail)
+  email: "info@udvoy.com",
+  /** shown as written; `tel` is the same number for links (tel:, WhatsApp) */
+  phone: "+880 1788-405520",
+  tel: "+8801788405520",
+  whatsapp: "https://wa.me/8801788405520",
+  /** the office, as used on the page and in the structured data for Google */
+  address: {
+    street: "Moniruzzaman New Market, Level-2, 1st Floor, Harinathpur Sokal Bazar",
+    locality: "Kazipur",
+    region: "Sirajganj",
+    country: "Bangladesh",
+    countryCode: "BD",
+  },
+  /** the office on Google Maps (also the Google Business Profile) */
+  map: "https://maps.app.goo.gl/wucJLo83dWRMR5hp8",
+  /** public profiles; add LinkedIn, Instagram, X or YouTube here as they're created */
+  social: [{ name: "Facebook", url: "https://www.facebook.com/profile.php?id=61596695825925" }],
   /** where the team works from */
   locations: "Bangladesh & Pakistan",
   founded: 2026,

@@ -6,15 +6,12 @@ import { FAQ, SERVICES, SITE, TEAM } from "./site";
  */
 
 /**
- * The live address of the site, with no trailing slash. Set NEXT_PUBLIC_SITE_URL to your real
- * domain (e.g. https://udvoyit.com) where you deploy. On Vercel it falls back to the project's
- * production domain, and locally to localhost.
+ * The live address of the site, with no trailing slash: https://udvoy.com in production builds,
+ * localhost in development. NEXT_PUBLIC_SITE_URL overrides it (e.g. for a staging domain).
  */
 export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : "http://localhost:3000")
+  (process.env.NODE_ENV === "production" ? "https://udvoy.com" : "http://localhost:3000")
 ).replace(/\/+$/, "");
 
 /** about 60 characters: what search results show as the link */
@@ -53,8 +50,8 @@ export const KEYWORDS = [
   "IT company",
 ];
 
-/** CONFIRM: your public profiles (LinkedIn, Facebook, X, Clutch…), so search engines link them to UDVOY IT */
-export const SOCIAL_PROFILES: string[] = [];
+/** public profiles and the Google Business Profile, so search engines link them to UDVOY IT (edit SITE.social) */
+export const SOCIAL_PROFILES: string[] = [...SITE.social.map((s) => s.url), SITE.map];
 
 /** Google Search Console: set NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION to the code it gives you */
 export const GOOGLE_VERIFICATION = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
@@ -91,8 +88,18 @@ export function jsonLd() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
+        // a company with a real office: also a local business, which links it to the Google Business Profile
+        "@type": ["Organization", "ProfessionalService"],
         "@id": org,
+        telephone: SITE.tel,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: SITE.address.street,
+          addressLocality: SITE.address.locality,
+          addressRegion: SITE.address.region,
+          addressCountry: SITE.address.countryCode,
+        },
+        hasMap: SITE.map,
         name: SITE.name,
         alternateName: ["UDVOY", "Udvoy IT"],
         url: `${SITE_URL}/`,
@@ -124,6 +131,7 @@ export function jsonLd() {
           "@type": "ContactPoint",
           contactType: "sales",
           ...email,
+          telephone: SITE.tel,
           url: `${SITE_URL}/#contact`,
           availableLanguage: ["English"],
         },
