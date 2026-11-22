@@ -36,8 +36,12 @@ function Card({ m, i, lead = false, clone = false }: { m: Member; i: number; lea
         )}
       </div>
       <div className="member-info">
-        <h3 title={m.name}>{m.name}</h3>
-        <p className="member-role" title={m.role}>{m.role}</p>
+        <div className="member-name" data-tooltip={m.name}>
+          <h3>{m.name}</h3>
+        </div>
+        <div className="member-role" data-tooltip={m.role}>
+          <p className="member-role-text">{m.role}</p>
+        </div>
       </div>
       {m.linkedin && (
         <a className="member-link" href={m.linkedin} target="_blank" rel="noreferrer" aria-label={`${m.name} on LinkedIn`}>
