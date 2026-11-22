@@ -13,12 +13,12 @@ export const SITE = {
   tagline: "Empowering Businesses Through Technology.",
   email: "info@udvoy.com",
   /** shown as written; `tel` is the same number for links (tel:, WhatsApp) */
-  phone: "+880 1788-405520",
+  phone: "+8801788-405520",
   tel: "+8801788405520",
   whatsapp: "https://wa.me/8801788405520",
   /** the office, as used on the page and in the structured data for Google */
   address: {
-    street: "Moniruzzaman New Market, Level-2, 1st Floor, Harinathpur Sokal Bazar",
+    street: "Harinathpur Sokal Bazar, Moniruzzaman New Market, Level-2, 1st Floor",
     locality: "Kazipur",
     region: "Sirajganj",
     country: "Bangladesh",
